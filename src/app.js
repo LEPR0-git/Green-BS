@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const authRoutes = require('./routes/authRoutes');
 const errorHandler = require('./middlewares/errorHandler');
-const reportRoutes = require('./routes/reportRoutes');  // ← AJOUTER
+const reportRoutes = require('./routes/reportRoutes');
 const tokenRoutes = require('./routes/tokenRoutes');
 const statsRoutes = require('./routes/statsRoutes');
 
@@ -34,18 +34,10 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', uptime: process.uptime() });
 });
 
-// Routes d'authentification
+// Routes
 app.use('/api/auth', authRoutes);
-
-
-// Routes d'authentification
-app.use('/api/auth', authRoutes);
-
-// Routes de signalement
-app.use('/api/reports', reportRoutes);  // ← AJOUTER
-
+app.use('/api/reports', reportRoutes);
 app.use('/api/tokens', tokenRoutes);
-
 app.use('/api/stats', statsRoutes);
 
 // ============================================
